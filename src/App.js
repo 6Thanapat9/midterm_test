@@ -1,25 +1,154 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import React, { useRef } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import { Container, Button, Table } from "react-bootstrap";
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+import Contact from "./Contact";
+export function Layout() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <nav className="bg-secondary p-2 mb-3 text-center">
+      <NavLink
+        to="/"
+        className="link px-2"
+        style={({ isActive }) => {
+          return {
+            textDecoration: isActive ? "none" : "underline",
+          };
+        }}
+      >
+        หน้าแรก
+      </NavLink>
+      <NavLink
+        to="/product"
+        className="link px-2"
+        style={({ isActive }) => {
+          return {
+            textDecoration: isActive ? "none" : "underline",
+          };
+        }}
+      >
+        ตารางเทียบแคลอรี่
+      </NavLink>
+      <NavLink
+        to="/contact"
+        className="link px-2"
+        style={({ isActive }) => {
+          return {
+            textDecoration: isActive ? "none" : "underline",
+          };
+        }}
+      >
+        ผู้จัดทำ
+      </NavLink>
+    </nav>
   );
 }
-
+function Index() {
+  return (
+    <>
+      <Layout />
+      <div>
+        <h1 className="font_edit">
+          อาหารพื้นเมืองที่มีสรรพคุณต่อสุขภาพตามวิถีภูมิปัญญาท้องถิ่นของจังหวัดอุบลราชธานี
+        </h1>
+      </div>
+      <div>
+        <img src="f0602.jpg" alt="" />
+        <p className="t">
+          ผัดไทยเป็นอาหารพื้นเมืองที่มีสรรพคุณต่อสุขภาพ ตามวิถีภูมิปัญญาท้องถิ่น
+          ของจังหวัดอุบลราชธานี ที่ได้สืบทอดกันมารุ่นต่อรุ่น
+          มีความโดดเด่นและมีความเป็นเอกลักษณ์ที่มีความประณีตสวยงาม
+          ของจังหวัดอุบลราชธานี มีความเป็นธรรมชาติของส่วนผสมหลักและเครื่องปรุงรส
+          เป็นอาหารที่ให้คุณค่าทางโภชนาการ และมีสารอาหารครบ 5 หมู่
+          ที่มีประโยชน์ต่อร่างกายครบถ้วน อาทิ
+          คาร์โบไฮเดรตได้มาจากเส้นของก๋วยเตี๋ยว โปรตีน ได้มาจากเนื้อสัตว์
+          กุ้งแห้ง และถั่วลิสง ไขมันได้มาจากน้ำมันพืช
+          วิตามินและเกลือแร่ได้จากเครื่องเคียงพืชผักสมุนไพรและเครื่องปรุงรส
+          ที่มีครบทุกรสคือ เปรี้ยว หวาน เค็ม มัน เพิ่มรสชาติความเปรี้ยว ด้วย
+          น้ำมะขามเปียก มะนาว รสหวานได้จากน้ำตาล รสเค็มได้จากน้ำปลา กุ้งแห้ง
+          และรสมัน ได้จากถั่วลิสงคั่วป่น เติมความเผ็ดด้วยพริกป่น
+          โรยหน้าด้วยต้นหอมและผักชี เป็นความผสมผสานที่ลงตัวระหว่างชนิดของอาหาร
+          และเครื่องปรุง มีรสชาติกลมกล่อม เพิ่มเสน่ห์ของความเป็นไทย
+          ด้วยการห่อผัดไทยด้วยใบบัว สรรพคุณ ของใบบัวที่ใช้ห่อนั้น
+          ช่วยต้านอนุมูลอิสระ ส่งผลดีต่อระบบของร่างกาย
+          ช่วยบำรุงหัวใจได้เป็นอย่างดี และยังเพิ่มความหอมของผัดไทยมากยิ่งขึ้น
+          รับประทานกับเครื่องเคียงผักพื้นบ้านนานาชนิด อาทิ หัวปลี ถั่วงอก
+          ใบกุยช่าย ใบบัวบก เป็นต้น ซึ่งมีคุณค่าทางสมุนไพรสูง มีใยอาหารสูง
+          มีวิตามิน และเกลือแร่ที่สำคัญ
+          อยู่ในส่วนประกอบของอาหารและในส่วนที่เป็นเครื่องเคียง
+          อุดมด้วยพืชผักสมุนไพรมากมายหลายชนิด ซึ่งมีสรรพคุณทางยาจากสารพฤกษเคมี
+          ช่วยต้านอนุมูลอิสระ ส่งเสริมระบบภูมิคุ้มกัน แก้อาการช้ำใน
+          ลดอาการอักเสบ ช่วยบำรุงเลือด บำรุงหัวใจ บำรุงประสาท และสมอง
+          เพิ่มความสามารถในการจำ ลดความเสี่ยงอัลไซเมอร์
+          สมองเสื่อมและลดอัตราเสี่ยงต่อการเกิดโรค เช่น
+          ช่วยลดระดับโคเลสเตอรอลในเลือด ลดความดันโลหิต ป้องกันโรคมะเร็ง เป็นต้น{" "}
+        </p>
+        <button>เรียนรู้เพิ่มเติม</button>
+      </div>
+    </>
+  );
+}
+function Product() {
+  const table = useRef();
+  const tr = useRef([]);
+  const DeleteRow = (i) => {
+    const index = tr.current[i].rowIndex;
+    table.current.deleteRow(index);
+  };
+  const data = [
+    ["ผัดไทหมื่นปีห่อใบบัว", 320],
+    ["หมี่กระทิ", 250],
+    ["แกงอ่อมหอยขม", 240],
+  ];
+  return (
+    <>
+      <Layout />
+      <h4>Products</h4>
+      <Table striped border hover className="my-3" ref={table}>
+        <thead>
+          <tr>
+            <th>เมนูอาหาร</th>
+            <th>พลังงานที่ได้รับ</th>
+            <th>เลือกเมนูนี้</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((item, i) => {
+            return (
+              <tr
+                ref={(el) => {
+                  tr.current[i] = el;
+                }}
+                key={i}
+              >
+                <td>{item[0]}</td>
+                <td>{item[1]}</td>
+                <td className="text-center">
+                  <Button variant="danger" onClick={() => DeleteRow(i)}>
+                    เลือกเมนูนี้
+                  </Button>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </Table>
+    </>
+  );
+}
+function App() {
+  return (
+    <BrowserRouter>
+      <Container className="p-3 my-3 bg-light">
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/main" element={<Index />} />
+          <Route path="/product" element={<Product />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </Container>
+    </BrowserRouter>
+  );
+}
 export default App;
